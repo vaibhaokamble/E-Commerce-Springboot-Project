@@ -35,20 +35,16 @@ public class CategoryServiceImpl implements CategoryService {
     public String deleteCategory(Long categoryId) {
         Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("Category","categoryId",categoryId));
-
         categoryRepository.delete(category);
         return "Category with categoryId: " + categoryId + " deleted successfully !!";
-
     }
 
     @Override
     public Category updateCategory(Category category, Long categoryId) {
         Category savedCategory = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("Category","categoryId",categoryId));
-
         category.setCategoryId(categoryId);
         savedCategory = categoryRepository.save(category);
         return savedCategory;
-
     }
 }
