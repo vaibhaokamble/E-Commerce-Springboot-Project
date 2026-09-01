@@ -18,6 +18,7 @@ public class FileServiceImpl implements FileService {
         String originalFileName = file.getOriginalFilename();
 
         String randomId = UUID.randomUUID().toString();
+        assert originalFileName != null;
         String fileName = randomId.concat(originalFileName.substring(originalFileName.lastIndexOf('.')));
         String filePath = path + File.separator + fileName;
 
